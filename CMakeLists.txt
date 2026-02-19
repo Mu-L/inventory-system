@@ -13,7 +13,11 @@ add_subdirectory(godot-cpp)
 
 set(LIBRARY_TARGET "${PROJECT_NAME}")
 
-file(GLOB_RECURSE SOURCES src/*.c** src/*.h**)
+file(GLOB_RECURSE SOURCES 
+    src/*.cpp 
+    src/*.h
+)
+list(FILTER SOURCES EXCLUDE REGEX "src/editor/.*")
 
 add_library(${LIBRARY_TARGET} SHARED ${SOURCES})
 
